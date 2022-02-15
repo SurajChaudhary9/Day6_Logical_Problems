@@ -3,20 +3,30 @@ package LogicalProblems;
 import java.util.Scanner;
 
 public class stopWatchSimulator {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Press 1 to start the stop watch");
-		double startWatch=sc.nextDouble();
-		
-		startWatch=System.currentTimeMillis();
-		
-		System.out.println("Press 0 to stop the stop watch");
-		double stopwatch=sc.nextDouble();
-		stopwatch=System.currentTimeMillis();
-		
-		System.out.println("The Elapsed time is  "+((stopwatch-startWatch)/1000) + " seconds ");
-		
-		sc.close();
+	public static double startWatch() {
+		System.out.println("Enter 1 to start watch");
+		try (Scanner scanner = new Scanner(System.in)) {
+			double startWatch = scanner.nextDouble();
+			startWatch = System.currentTimeMillis();
+			return startWatch;
+		}
 
-	}	
+	}
+
+	public static double stopWatch() {
+		System.out.println("Enter 0 to stop watch");
+		try (Scanner scanner = new Scanner(System.in)) {
+			double stopWatch = scanner.nextDouble();
+			stopWatch = System.currentTimeMillis();
+			return stopWatch;
+		}
+
+	}
+
+	public static void main(String[] args) {
+		double timeInSec = Math.abs((startWatch() - stopWatch())) / 1000;
+		System.out.println("time in sec is " + timeInSec);
+
+	}
+
 }
